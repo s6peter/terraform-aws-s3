@@ -1,0 +1,25 @@
+# Local Terraform data, plans, state, and variable values.
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+*.tfvars.json
+.terraform.lock.hcl
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Release tooling and local credentials.
+node_modules/
+*.log
+.env
+.env.*
+!.env.example
+*.pem
+*.key

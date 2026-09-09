@@ -1,0 +1,17 @@
+{
+  "name": "terraform-aws-s3-release",
+  "version": "0.0.0-development",
+  "private": true,
+  "description": "Release tooling for the Terraform AWS S3 module",
+  "engines": {
+    "node": "^22.14.0 || >=24.10.0"
+  },
+  "scripts": {
+    "release": "semantic-release",
+    "release:dry-run": "semantic-release --dry-run"
+  },
+  "devDependencies": {
+    "conventional-changelog-conventionalcommits": "10.4.0",
+    "semantic-release": "25.0.9"
+  }
+}
