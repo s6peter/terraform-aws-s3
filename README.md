@@ -102,7 +102,11 @@ This verifies version detection and release-note rendering without publishing a 
 
 ## Releases
 
-Development takes place on `main`. Promote changes to `release` to publish a stable release. The release workflow runs semantic-release, which reads Conventional Commits and creates a version tag and GitHub release automatically. The first qualifying release is `v1.0.0`; subsequent releases follow these rules:
+Submit changes through a feature-branch pull request targeting `main`. After CI passes and an independent reviewer approves, merge the PR. Successful `main` CI automatically opens or reuses a pull request from `main` to `release`. An independent reviewer approves that promotion before it is merged. The release workflow verifies approval, reruns validation and release tests, then uses semantic-release to publish a qualifying version tag and GitHub release.
+
+Both branches require repository protection to enforce review before merge. The setup instructions and current GitHub plan limitation are documented in [Reviewed release workflow](docs/reviewed-release-flow.md).
+
+The first qualifying release is `v1.0.0`; subsequent releases follow these rules:
 
 | Commit | Version change |
 | --- | --- |
@@ -111,14 +115,4 @@ Development takes place on `main`. Promote changes to `release` to publish a sta
 | `feat!: remove an input` or a `BREAKING CHANGE:` footer | Major, for example `1.0.0` → `2.0.0` |
 | `docs:`, `chore:`, or other commits without a release-triggering change | No release |
 
-Use Conventional Commit messages for changes that land on `main`, including squash merge titles. Preserve those commits when merging `main` into `release`, or use a Conventional Commit squash message that reflects all promoted changes. No npm package is published; consumers use Git tags in their Terraform module source.
-
-For example, after changes have been reviewed and merged into `main`:
-
-```sh
-git fetch origin
-git switch release
-git pull --ff-only origin release
-git merge origin/main
-git push origin release
-```
+Use Conventional Commit messages for individual commits and PR titles. Use **Create a merge commit** for merges to preserve history; do not squash or rebase release promotions. No npm package is published; consumers use Git tags in their Terraform module source. You do not need to switch to or push the `release` branch locally.
