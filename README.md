@@ -91,6 +91,15 @@ terraform validate
 
 These checks validate configuration without creating AWS resources.
 
+To check the release tooling locally, use Node.js 24 and run:
+
+```sh
+npm ci --ignore-scripts
+npm test
+```
+
+This verifies version detection and release-note rendering without publishing a release.
+
 ## Releases
 
 Development takes place on `main`. Promote changes to `release` to publish a stable release. The release workflow runs semantic-release, which reads Conventional Commits and creates a version tag and GitHub release automatically. The first qualifying release is `v1.0.0`; subsequent releases follow these rules:

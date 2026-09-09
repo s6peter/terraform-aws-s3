@@ -7,11 +7,12 @@
     "node": "^22.14.0 || >=24.10.0"
   },
   "scripts": {
+    "test": "node scripts/check-release.mjs",
     "release": "semantic-release",
     "release:dry-run": "semantic-release --dry-run"
   },
   "devDependencies": {
-    "conventional-changelog-conventionalcommits": "10.4.0",
+    "conventional-changelog-conventionalcommits": "9.1.0",
     "semantic-release": "25.0.9"
   }
 }
